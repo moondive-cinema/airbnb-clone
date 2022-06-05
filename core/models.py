@@ -1,12 +1,12 @@
 from django.db import models
 
 
-class TimeStampedModel:
+class TimeStampedModel(models.Model):
 
-    """ Time Stamped Model """
+    """Time Stamped Model"""
 
     created = models.DateField(auto_now_add=True)
-    upadated = models.DateField(auto_now=True)
+    updated = models.DateField(auto_now=True)
 
     class Meta:
         abstract = True
