@@ -2,11 +2,19 @@ from django.contrib import admin
 from . import models
 
 
-@admin.register(models.Message)
-class MessageAdmin(admin.ModelAdmin):
-    pass
-
-
 @admin.register(models.Conversation)
 class ConversationAdmin(admin.ModelAdmin):
-    pass
+
+    """Conversation Admin Definition"""
+
+    list_display = ("__str__", "count_messages", "count_participants")
+
+    filter_horizontal = ("participants",)
+
+
+@admin.register(models.Message)
+class MessageAdmin(admin.ModelAdmin):
+
+    """Message Admin Definition"""
+
+    list_display = ("__str__", "created", "conversation")
