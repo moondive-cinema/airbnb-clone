@@ -7,5 +7,6 @@
   ],
   "cSpell.words": [
     "superhost"
-  ]
+  ],
+  "emmet.includeLanguages": {"django-html": "html"} 
 }
