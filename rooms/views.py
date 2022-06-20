@@ -1,7 +1,8 @@
 from django.views.generic import ListView, DetailView
 
 # from django.http import Http404
-# from django.shortcuts import render
+from django_countries import countries
+from django.shortcuts import render
 from . import models
 
 
@@ -23,7 +24,7 @@ class RoomDetail(DetailView):
 
 
 """
-fbv version
+# fbv version room detail
 
 def room_detail(request, pk):
     try:
@@ -33,3 +34,20 @@ def room_detail(request, pk):
         raise Http404()
 
 """
+
+
+def search(request):
+    city = request.GET.get("city", "anywhere")
+    city = str.capitalize(city)
+    country = request.GET.get("country", "KR")
+    room_type = int(request.GET.get("room_type", 0))
+    room_types = models.RoomType.objects.all()
+
+    form = {"city": city, "s_room_type": room_type, "s_country": country}
+    choices = {"countries": countries, "room_types": room_types}
+
+    return render(
+        request,
+        "rooms/search.html",
+        {**form, **choices},
+    )
