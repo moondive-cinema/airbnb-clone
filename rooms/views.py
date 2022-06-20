@@ -1,3 +1,4 @@
+from multiprocessing import BoundedSemaphore
 from django.views.generic import ListView, DetailView
 
 # from django.http import Http404
@@ -42,8 +43,22 @@ def search(request):
     country = request.GET.get("country", "KR")
     room_type = int(request.GET.get("room_type", 0))
     room_types = models.RoomType.objects.all()
+    price = int(request.GET.get("price", 0))
+    guests = int(request.GET.get("guests", 0))
+    beds = int(request.GET.get("beds", 0))
+    bedrooms = int(request.GET.get("bedrooms", 0))
+    baths = int(request.GET.get("baths", 0))
 
-    form = {"city": city, "s_room_type": room_type, "s_country": country}
+    form = {
+        "city": city,
+        "s_room_type": room_type,
+        "s_country": country,
+        "price": price,
+        "guests": guests,
+        "beds": beds,
+        "bedrooms": bedrooms,
+        "baths": baths,
+    }
     choices = {"countries": countries, "room_types": room_types}
 
     return render(

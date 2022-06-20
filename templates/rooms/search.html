@@ -22,7 +22,7 @@
             <select id="country" name="country">                
                 {% for country in countries %}
                     <option value="{{country.code}}" 
-                        {% if country.code == s_country %}selected{% endif %}>
+                        {% if country.code == s_country %} selected {% endif %}>
                         {{country.name}}
                     </option>
                 {% endfor %}                  
@@ -39,6 +39,26 @@
                     </option>
                 {% endfor %}
             </select>
+        </div>
+        <div>
+            <label for="price">Price</label>
+            <input id="price" type="number" value={{price}} name="price" placeholder="Price" />
+        </div>
+        <div>
+            <label for="guests">Guests</label>
+            <input id="guests" type="number" value={{guests}} name="guests" placeholder="Guests" />
+        </div>
+        <div>
+            <label for="beds">Beds</label>
+            <input id="beds" type="number" value={{beds}} name="beds" placeholder="Beds" />
+        </div>
+        <div>
+            <label for="bedrooms">Bedrooms</label>
+            <input id="bedrooms" type="number" value={{bedrooms}} name="bedrooms" placeholder="Bedrooms" />
+        </div>
+        <div>
+            <label for="baths">Baths</label>
+            <input id="baths" type="number" value={{baths}} name="baths" placeholder="Baths" />
         </div>
         <button>Submit</button>
     </form>
