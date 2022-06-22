@@ -60,10 +60,56 @@
             <label for="baths">Baths</label>
             <input id="baths" type="number" value={{baths}} name="baths" placeholder="Baths" />
         </div>
+        <div>
+            <label for="superhost">Super Host Only</label>
+            <input id="superhost" type="checkbox" name="superhost" 
+                {% if superhost %} checked {% endif %}/>
+        <div>
+            <label for="instant">Instant Book Only</label>
+            <input id="instant" type="checkbox" name="instant" 
+                {% if instant %} checked {% endif %}/>
+        </div>
+        <div>
+            <h3>Amenities</h3>
+            <ul>
+                {% for amenity in amenities %}
+                <li>
+                    <label for="amenity_{{amenity.pk}}"> {{amenity.name}} </label>
+                    <input id=""amenity_{{amenity.pk}}" 
+                        name="amenities" 
+                        type="checkbox" 
+                        value={{amenity.pk}} 
+                        {% if amenity.pk|slugify in checked_amenities %} checked {% endif %} />
+                </li>
+                {% endfor %}
+            </ul>
+        </div>
+        <div>
+            <h3>Facilities</h3>
+            <ul>
+                {% for facility in facilities %}
+                <li>
+                    <label for="facility_{{facility.pk}}"> {{facility.name}} </label>
+                    <input id="facility_{{facility.pk}}" 
+                        name="facilities" 
+                        type="checkbox" 
+                        value={{facility.pk}} 
+                        {% if facility.pk|slugify in checked_facilities %} checked {% endif %} />
+                </li>
+                {% endfor %}
+
+            </ul>
+        </div>
         <button>Submit</button>
     </form>
 
-    <h4>Searching by {{city}}</h4>
+    <h3>Results</h3>
+
+        
+    {% for room in rooms %}
+        <h3>{{room.name}}</h3>            
+    {% endfor %}
+            
 
 {% endblock content %}
 
