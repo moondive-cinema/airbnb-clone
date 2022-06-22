@@ -13,7 +13,8 @@
     <h2>Search!</h2>
 
     <form method="get" action="{% url "rooms:search" %}">
-        <div>
+        {{form.as_p}}
+        <!-- <div>
             <label for="city">City</label>
             <input value="{{city}}" name="city" placeholder="Search by City" />
         </div>
@@ -99,12 +100,11 @@
                 {% endfor %}
 
             </ul>
-        </div>
+        </div> -->
         <button>Submit</button>
     </form>
 
     <h3>Results</h3>
-
         
     {% for room in rooms %}
         <h3>{{room.name}}</h3>            
