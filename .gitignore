@@ -161,9 +161,9 @@ cython_debug/
 
 # Mac
 .DS_Store
-
 # my photos
 uploads/
-
-# admin account information file
+# node.js
+node_modules/
+# admin account information file for my own reminder
 admin_account.txt
