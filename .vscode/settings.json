@@ -3,6 +3,12 @@
   "python.linting.enabled": true,
   "python.formatting.provider": "black",
   "python.linting.flake8Args": ["--max-line-length=99"],
-  "cSpell.words": ["Mbnb", "moonbnb", "superhost"],
+  "cSpell.words": [
+    "kakao",
+    "mailgun",
+    "Mbnb",
+    "moonbnb",
+    "superhost"
+  ],
   "emmet.includeLanguages": { "django-html": "html" }
 }
