@@ -105,6 +105,10 @@ class Room(core_models.TimeStampedModel):
         for review in all_reviews:
             all_ratings += review.rating_average()
         if len(all_reviews) > 0:
-            return round(all_ratings / len(all_reviews))
+            return round(all_ratings / len(all_reviews), 2)
         else:
             return 0
+
+    def first_photo(self):
+        (photo,) = self.photos.all()[:1]
+        return photo.file.url
