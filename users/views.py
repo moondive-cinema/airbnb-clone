@@ -7,7 +7,7 @@ from django.core.files.base import ContentFile
 from django.contrib import messages
 
 # from django.views import View
-from django.views.generic import FormView
+from django.views.generic import FormView, DetailView
 from . import forms, models
 
 
@@ -243,3 +243,15 @@ def kakao_callback(request):
     except KakaoException as e:
         messages.error(request, e)
         return redirect(reverse("users:login"))
+
+
+class UserProfileView(DetailView):
+
+    model = models.User
+    context_object_name = "user_obj"
+
+    # context 예시용 코드
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context["hello"] = "Hello!"
+        return context
