@@ -18,7 +18,7 @@
                     <i class="fas fa-check-circle text-teal-400 ml-1"></i>                
                 {% endif %}
             </div>
-            <span class="text-lg mt-1 mb-3"> {{user.bio}} </span>
+            <span class="text-lg mt-1 mb-3"> {{user_obj.bio}} </span>
             {% if user == user_obj %}
                 <a href="{%url 'users:update' %}" class="btn-link">Edit Profile</a>
             {% endif %}
