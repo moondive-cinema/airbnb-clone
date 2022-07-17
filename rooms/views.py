@@ -19,7 +19,7 @@ class HomeView(ListView):
     model = models.Room
     paginate_by = 8
     paginate_orphans = 5
-    ordering = "created"
+    ordering = "-created"
 
 
 class RoomDetail(DetailView):

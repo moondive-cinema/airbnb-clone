@@ -166,4 +166,4 @@ uploads/
 # node.js
 node_modules/
 # admin account information file for my own reminder
-admin_account.txt
+accounts.txt
