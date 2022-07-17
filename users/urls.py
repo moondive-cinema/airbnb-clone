@@ -14,7 +14,10 @@ urlpatterns = [
     path(
         "verify/<str:key>/", views.complete_verification, name="complete-verification"
     ),
-    path("<int:pk>/", views.UserProfileView.as_view(), name="profile"),
+    path(
+        "<int:pk>/", views.UserProfileView.as_view(), name="profile"
+    ),  # models의 get_abolute_url 메서드를 통해 pk를 받아옴
     path("update-profile/", views.UpdateProfileView.as_view(), name="update"),
     path("update-password/", views.UpdatePasswordView.as_view(), name="password"),
+    path("switch-hosting/", views.switch_hosting, name="switch-hosting"),
 ]

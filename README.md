@@ -13,3 +13,6 @@ Cloning Airbnb with Python(3.8), Django(2.2.5), Tailwind and more.
 - Negative margin applied in the main page. It leads overflow at both sides when the screen is narrow. Should be fixed later.
 
 - User profile edit cannot show the text inside the form only when it's run by Chrome.
+
+- styles.scss의 btn-link에 다른 스타일을 적용하려고 하면 적용되지 않음
+

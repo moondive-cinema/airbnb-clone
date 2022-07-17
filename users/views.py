@@ -1,6 +1,7 @@
 import os
 import requests
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.shortcuts import redirect, reverse  # , render
 from django.urls import reverse_lazy
 from django.core.files.base import ContentFile
@@ -13,10 +14,11 @@ from django.views.generic import FormView, DetailView, UpdateView
 from . import forms, models, mixins
 
 
-class LoginView(mixins.LoggedOutOnlyView, FormView):
+class LoginView(FormView):
 
     template_name = "users/login.html"
     form_class = forms.LoginForm
+    success_url = reverse_lazy("core:home")
 
     def form_valid(self, form):
         email = form.cleaned_data.get("email")
@@ -26,13 +28,6 @@ class LoginView(mixins.LoggedOutOnlyView, FormView):
             login(self.request, user)
         return super().form_valid(form)
 
-    def get_success_url(self):
-        next_arg = self.request.GET.get("next")
-        if next_arg is not None:
-            return next_arg
-        else:
-            return reverse("core:home")
-
 
 def log_out(request):
     messages.info(request, "See you later")
@@ -40,7 +35,7 @@ def log_out(request):
     return redirect(reverse("core:home"))
 
 
-class SignUpView(mixins.LoggedOutOnlyView, FormView):
+class SignUpView(FormView):
 
     template_name = "users/signup.html"
     form_class = forms.SignUpForm
@@ -255,6 +250,7 @@ def kakao_callback(request):
 
 class UserProfileView(DetailView):
 
+    # DetaliView를 상속받으면 오브젝트_detail.html을 템플릿명으로 자동으로 받음
     model = models.User
     context_object_name = "user_obj"
 
@@ -306,3 +302,12 @@ class UpdatePasswordView(
 
     def get_success_url(self):
         return self.request.user.get_absolute_url()
+
+
+@login_required
+def switch_hosting(request):
+    try:
+        del request.session["is_hosting"]
+    except KeyError:
+        request.session["is_hosting"] = True
+    return redirect(reverse("core:home"))
