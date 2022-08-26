@@ -8,7 +8,8 @@
     "mailgun",
     "Mbnb",
     "moonbnb",
-    "superhost"
+    "superhost",
+    "wsgi"
   ],
   "emmet.includeLanguages": { "django-html": "html" }
 }
