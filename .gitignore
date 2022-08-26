@@ -167,3 +167,7 @@ uploads/
 node_modules/
 # admin account information file for my own reminder
 accounts.txt
+# Elastic Beanstalk Files
+.elasticbeanstalk/*
+!.elasticbeanstalk/*.cfg.yml
+!.elasticbeanstalk/*.global.yml
