@@ -12,6 +12,7 @@ psycopg2-binary = "*"
 faker = "*"
 django-dotenv = "*"
 requests = "*"
+pipenv-to-requirements = "*"
 
 [dev-packages]
 flake8 = "*"
